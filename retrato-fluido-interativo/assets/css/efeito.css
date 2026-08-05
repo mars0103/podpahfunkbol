@@ -1,0 +1,70 @@
+/* Império WEB Codes Store | marsdesigner.com.br/codesstore */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;700&display=swap");
+
+:root {
+  --reveal-bg: #01183A;
+  --reveal-footer-color: #ffffff;
+  --reveal-footer-size: 0.85rem;
+  --reveal-footer-shadow: 0 2px 12px rgba(255, 255, 255, 0.7);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM Mono", monospace;
+  background: var(--reveal-bg);
+  overflow: hidden;
+}
+
+.portrait-reveal-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--reveal-bg);
+  isolation: isolate;
+}
+
+.portrait-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 2;
+}
+
+.portrait-footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 5;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: var(--reveal-footer-color);
+  text-shadow: var(--reveal-footer-shadow);
+  pointer-events: none;
+}
+
+.portrait-footer p {
+  font-size: var(--reveal-footer-size);
+  font-weight: 700;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .portrait-footer {
+    padding: 1rem;
+  }
+}

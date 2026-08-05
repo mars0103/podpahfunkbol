@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- Império WEB Codes Store | marsdesigner.com.br/codesstore -->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retrato Fluido Interativo | Império WEB Codes Store</title>
+  <link rel="stylesheet" href="assets/css/efeito.css" />
+</head>
+<body>
+
+  <div class="portrait-reveal-wrapper">
+    <canvas id="portrait-canvas" class="portrait-canvas"></canvas>
+
+    <footer class="portrait-footer">
+      <p>Mova o mouse para revelar</p>
+      <p>Retrato Fluido Interativo</p>
+    </footer>
+  </div>
+
+  <script type="module">
+    import { initPortraitReveal } from './assets/js/efeito.js';
+
+    initPortraitReveal({
+      canvas:    document.getElementById('portrait-canvas'),
+      topSrc:    'assets/img/portrait_top.png',
+      bottomSrc: 'assets/img/portrait_bottom.png',
+    });
+  </script>
+
+</body>
+</html>
