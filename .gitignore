@@ -3,3 +3,10 @@ dist
 .DS_Store
 *.log
 .claude
+
+/server/data/
+/artifacts/game/
+
+/podpah_admin.sql
+/podpahfunkbol.zip
+scratchpad-*

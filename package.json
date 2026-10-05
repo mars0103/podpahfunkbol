@@ -6,17 +6,26 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "game:server": "node server/game-ranking.mjs",
+    "game:test": "node --test server/game.test.mjs server/http.test.mjs",
+    "game:test:php": "node --test server/php-parity.test.mjs",
+    "game:test:campaign": "node --test server/campaign.test.mjs",
+    "game:build:football": "node server/build-football-php.mjs",
+    "game:test:football": "node server/football.test.mjs"
   },
   "dependencies": {
     "gsap": "^3.12.7",
+    "lenis": "^1.3.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.18.2",
     "three": "^0.185.1"
   },
   "devDependencies": {
+    "@babel/parser": "^7.29.8",
     "@vitejs/plugin-react": "^4.3.4",
+    "playwright": "^1.62.1",
     "vite": "^5.4.11"
   }
 }
