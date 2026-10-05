@@ -1,0 +1,1 @@
+ALTER TABLE game_campaign_runs ADD COLUMN engine_version SMALLINT UNSIGNED NOT NULL DEFAULT 1 AFTER team;

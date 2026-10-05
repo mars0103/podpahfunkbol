@@ -1,0 +1,1733 @@
+@font-face {
+  font-family:"Funkbol Pixel";
+  src:url("../assets/fonts/PixelifySans.ttf") format("truetype");
+  font-weight:400 700;
+  font-style:normal;
+  font-display:swap;
+}
+.fb-game {
+  --gold:#F5BA00;
+  --ink:#2A203F;
+  --muted:#FFFFFFCC;
+  position:fixed;
+  inset:0;
+  z-index:200;
+  background:var(--ink);
+  color:#FFFFFF;
+  overflow:auto;
+  font-family:"Funkbol Pixel",monospace;
+  color-scheme:dark;
+  isolation:isolate;
+}
+.fb-game * {
+  box-sizing:border-box;
+}
+.fb-game button,.fb-game input {
+  font:inherit;
+}
+.fb-game button,.fb-game a {
+  -webkit-tap-highlight-color:transparent;
+}
+.fb-game button {
+  cursor:pointer;
+}
+.fb-game button:disabled {
+  opacity:.5;
+  cursor:wait;
+}
+.fb-game button:focus-visible,.fb-game a:focus-visible,.fb-game input:focus-visible {
+  outline:3px solid var(--gold);
+  outline-offset:5px;
+}
+.fb-game h1:focus {
+  outline:none;
+}
+.fb-game h1,.fb-game h2,.fb-game p {
+  margin:0;
+}
+.fb-noise {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background:radial-gradient(ellipse at 85% 25%,#E9117630,transparent 55%),linear-gradient(#ffffff03 1px,transparent 1px),linear-gradient(90deg,#ffffff03 1px,transparent 1px);
+  background-size:auto,64px 64px,64px 64px;
+}
+.fb-header {
+  height:86px;
+  margin:0 4.5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #ffffff18;
+  gap:20px;
+}
+.fb-back {
+  color:#FFFFFFCC;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.5px;
+}
+.fb-back:hover {
+  color:var(--gold);
+}
+.fb-brand {
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:0;
+}
+.fb-brand b {
+  font-size:11px;
+  letter-spacing:1px;
+  background:var(--gold);
+  color:var(--ink);
+  padding:5px 8px;
+  margin-left:7px;
+  vertical-align:middle;
+}
+.fb-edition {
+  font-size:10px;
+  color:#FFFFFFAA;
+  letter-spacing:2px;
+}
+.fb-content {
+  width:min(1320px,91%);
+  margin:auto;
+  min-height:calc(100dvh - 144px);
+  padding:48px 0;
+  animation:fb-enter .45s ease both;
+}
+.fb-home {
+  display:grid;
+  grid-template-columns:1.13fr 1fr;
+  align-items:center;
+  gap:4%;
+}
+.fb-eyebrow {
+  font-size:10px;
+  letter-spacing:2.4px;
+  font-weight:800;
+  color:var(--gold);
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+}
+.fb-eyebrow i {
+  width:7px;
+  height:7px;
+  background:var(--gold);
+  border-radius:50%;
+  box-shadow:0 0 15px #F5BA0080;
+}
+.fb-game h1 {
+  font-size:clamp(48px,6.8vw,102px);
+  font-weight:950;
+  line-height:.94;
+  letter-spacing:0;
+  margin:27px 0;
+}
+.fb-game h1 em {
+  font-style:italic;
+  color:var(--gold);
+}
+.fb-hero-copy>p,.fb-section-heading>p {
+  font-size:15px;
+  line-height:1.8;
+  color:var(--muted);
+}
+.fb-actions {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+.fb-primary,.fb-secondary {
+  border:1px solid transparent;
+  min-height:52px;
+  padding:16px 24px;
+  font-size:11px!important;
+  font-weight:800!important;
+  letter-spacing:1px;
+  transition:transform .18s,background .18s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+}
+.fb-primary {
+  background:var(--gold);
+  color:var(--ink);
+  box-shadow:5px 5px 0 #F5BA0020;
+}
+.fb-primary:hover {
+  background:#FFFFFF;
+  transform:translateY(-2px);
+}
+.fb-primary span {
+  font-size:19px;
+}
+.fb-secondary {
+  background:#ffffff05;
+  color:#fff;
+  border-color:#ffffff30;
+}
+.fb-secondary:hover {
+  background:#ffffff12;
+}
+.fb-text-button {
+  color:#FFFFFFCC;
+  background:none;
+  border:0;
+  padding:14px 0;
+  font-size:12px!important;
+}
+.fb-text-button:hover {
+  color:var(--gold);
+}
+.fb-rules {
+  display:flex;
+  gap:22px;
+  padding-top:39px;
+  margin-top:39px;
+  border-top:1px solid #ffffff17;
+  max-width:500px;
+}
+.fb-rules span {
+  font-size:10px;
+  color:var(--muted);
+  line-height:1.8;
+}
+.fb-rules b {
+  display:block;
+  color:#fff;
+  font-size:11px;
+  margin-bottom:5px;
+}
+.fb-hero-art {
+  height:510px;
+  position:relative;
+  display:grid;
+  place-items:center;
+  background:radial-gradient(ellipse,#E9117660,transparent 68%);
+  overflow:hidden;
+}
+.fb-orbit {
+  position:absolute;
+  width:370px;
+  height:370px;
+  border:1px solid #ffffff20;
+  border-radius:50%;
+  transform:rotate(-25deg) scaleX(1.1);
+}
+.fb-orbit:before,.fb-orbit:after {
+  content:'';
+  position:absolute;
+  inset:25px;
+  border:1px dashed #ffffff15;
+  border-radius:50%;
+}
+.fb-orbit:after {
+  inset:-40px;
+  border-style:solid;
+}
+.fb-art-type {
+  position:absolute;
+  font-size:116px;
+  font-weight:950;
+  line-height:.9;
+  letter-spacing:0;
+  color:transparent;
+  -webkit-text-stroke:1px #ffffff16;
+  transform:rotate(-10deg);
+}
+.fb-hero-ball {
+  position:absolute;
+  width:145px;
+  top:12px;
+  right:55px;
+  filter:drop-shadow(0 18px 18px #0007);
+  animation:fb-float 3s ease-in-out infinite;
+}
+.fb-hero-logo {
+  width:78%;
+  max-height:320px;
+  object-fit:contain;
+  filter:drop-shadow(0 18px 30px #0008);
+  transform:rotate(-7deg);
+}
+.fb-art-tag {
+  position:absolute;
+  bottom:27px;
+  left:23%;
+  padding:10px 16px;
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--gold);
+  background:#54407D;
+  border:1px solid #ffffff20;
+  transform:rotate(-7deg);
+}
+.fb-footer {
+  height:58px;
+  margin:0 4.5%;
+  border-top:1px solid #ffffff18;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  color:#FFFFFFAA;
+  font-size:9px;
+  letter-spacing:1.5px;
+}
+.fb-section-heading h1 {
+  font-size:clamp(38px,4.5vw,65px);
+  margin:18px 0;
+}
+.fb-team-grid {
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:12px;
+  margin:35px 0;
+}
+.fb-team {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:200px;
+  padding:22px 8px;
+  background:#403060;
+  border:1px solid #ffffff16;
+  color:#fff;
+  transition:transform .2s,border-color .2s,background .2s;
+}
+.fb-team:hover {
+  transform:translateY(-5px);
+  border-color:#ffffff60;
+}
+.fb-team.selected {
+  border-color:var(--gold);
+  background:linear-gradient(160deg,color-mix(in srgb,var(--card-color) 24%,#403060),#403060);
+  box-shadow:0 4px 0 var(--gold);
+}
+.fb-team img {
+  width:80px;
+  height:88px;
+  object-fit:contain;
+  margin-bottom:22px;
+  filter:drop-shadow(0 5px 10px #0005);
+}
+.fb-team strong {
+  font-size:12px;
+}
+.fb-team small {
+  font-size:9px;
+  letter-spacing:2px;
+  color:var(--muted);
+  margin-top:8px;
+}
+.fb-team-check {
+  position:absolute;
+  right:10px;
+  top:8px;
+  color:#777;
+  font-size:12px;
+}
+.fb-team.selected .fb-team-check {
+  color:var(--gold);
+}
+.fb-player-form {
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:25px;
+  background:#ffffff04;
+  border:1px solid #ffffff12;
+  padding:25px;
+  margin-bottom:12px;
+}
+.fb-player-form label {
+  font-size:9px;
+  font-weight:bold;
+  letter-spacing:2px;
+  flex:1;
+  max-width:330px;
+}
+.fb-player-form input {
+  display:block;
+  margin-top:12px;
+  width:100%;
+  padding:14px;
+  background:#2A203F;
+  border:1px solid #ffffff30;
+  color:#fff;
+  font-size:14px;
+  letter-spacing:0;
+}
+.fb-player-form p {
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.9;
+  align-self:center;
+}
+.fb-result {
+  text-align:center;
+  display:grid;
+  place-items:center;
+}
+.fb-result-card {
+  width:min(900px,100%);
+}
+.fb-result-card h1 {
+  font-size:clamp(42px,6vw,80px);
+}
+.fb-result-score {
+  font-size:clamp(70px,12vw,144px);
+  font-weight:900;
+  line-height:1.1;
+  color:var(--gold);
+  letter-spacing:0;
+}
+.fb-result-score>span {
+  display:block;
+  font-size:10px;
+  letter-spacing:5px;
+  color:#FFFFFFCC;
+  margin:5px 0 30px;
+}
+.fb-stats {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  padding:25px 0;
+  border-block:1px solid #ffffff20;
+}
+.fb-stats span {
+  font-size:11px;
+  color:var(--muted);
+}
+.fb-stats b {
+  display:block;
+  font-size:27px;
+  color:#fff;
+  margin-bottom:8px;
+}
+.fb-result .fb-actions {
+  justify-content:center;
+}
+.fb-save-status {
+  font-size:12px;
+  color:var(--muted);
+  margin-top:24px!important;
+  line-height:1.6;
+}
+.fb-leaderboard {
+  margin-top:30px;
+  border:1px solid #ffffff20;
+  background:#403060;
+  max-height:48dvh;
+  overflow:auto;
+  min-height:170px;
+}
+.fb-leaderboard table {
+  width:100%;
+  border-collapse:collapse;
+  text-align:left;
+  font-size:14px;
+}
+.fb-leaderboard th {
+  background:#54407D;
+  color:#FFFFFFCC;
+  font-size:9px;
+  letter-spacing:1.5px;
+  padding:16px 24px;
+  position:sticky;
+  top:0;
+}
+.fb-leaderboard td {
+  padding:16px 24px;
+  border-top:1px solid #ffffff10;
+}
+.fb-leaderboard th:last-child,.fb-leaderboard td:last-child {
+  text-align:right;
+  color:var(--gold);
+}
+.fb-ranking-player {
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+.fb-ranking-player img {
+  height:36px;
+  width:36px;
+  object-fit:contain;
+}
+.fb-ranking-player small {
+  display:block;
+  font-size:10px;
+  color:var(--muted);
+  margin-top:6px;
+}
+.fb-podium {
+  color:var(--gold);
+  font-weight:900;
+}
+.fb-empty {
+  text-align:center;
+  padding:35px 20px;
+}
+.fb-empty>span {
+  font-size:32px;
+  color:var(--gold);
+}
+.fb-empty h2 {
+  font-size:20px;
+  margin:15px 0;
+}
+.fb-empty p {
+  font-size:13px;
+  color:var(--muted);
+}
+.fb-wipe {
+  position:fixed;
+  inset:0;
+  background:#F5BA00;
+  z-index:20;
+  transform:translateY(105%);
+  transition:transform .22s ease-in;
+  display:grid;
+  place-items:center;
+  pointer-events:none;
+  color:var(--ink);
+  font-size:clamp(28px,7vw,80px);
+  font-weight:950;
+  font-style:italic;
+  letter-spacing:0;
+}
+.fb-wipe.active {
+  transform:translateY(0);
+  pointer-events:all;
+}
+.fb-match {
+  width:min(1100px,94%);
+  margin:auto;
+  padding:14px 0;
+}
+.fb-match-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
+  gap:15px;
+}
+.fb-match-player {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:35%;
+}
+.fb-match-player img {
+  width:39px;
+  height:44px;
+  object-fit:contain;
+}
+.fb-match-player strong {
+  font-size:13px;
+}
+.fb-match-player small {
+  display:block;
+  font-size:10px;
+  color:var(--muted);
+  margin-top:6px;
+}
+.fb-match-points {
+  text-align:center;
+}
+.fb-match-points strong {
+  font-size:30px;
+  color:var(--gold);
+  font-weight:900;
+}
+.fb-match-points span {
+  display:block;
+  font-size:8px;
+  letter-spacing:3px;
+  color:var(--muted);
+}
+.fb-match-top>.fb-secondary {
+  padding:10px 16px;
+  min-height:38px;
+}
+.fb-court {
+  position:relative;
+  width:min(100%,calc((100dvh - 245px)*1.5));
+  margin:auto;
+  aspect-ratio:1.5;
+  background-size:cover;
+  background-position:center;
+  border:1px solid #ffffff24;
+  overflow:hidden;
+  box-shadow:0 20px 70px #0005;
+}
+.fb-court canvas {
+  display:block;
+  width:100%;
+  height:100%;
+  touch-action:none;
+}
+.fb-court-hud {
+  position:absolute;
+  top:22px;
+  left:25px;
+  right:25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  pointer-events:none;
+  font-size:11px;
+  letter-spacing:1px;
+}
+.fb-court-hud b {
+  display:block;
+  font-size:36px;
+  letter-spacing:0;
+}
+.fb-court-hud small {
+  color:#888;
+}
+.fb-feedback {
+  position:absolute;
+  left:20%;
+  right:20%;
+  top:19%;
+  text-align:center;
+  color:var(--gold);
+  font-size:clamp(12px,2vw,24px);
+  font-weight:900;
+  font-style:italic;
+  pointer-events:none;
+  animation:fb-pop .3s ease-out;
+}
+.fb-feedback.combo {
+  text-shadow:0 0 22px #F5BA0060;
+}
+.fb-countdown,.fb-pause {
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:#2A203F66;
+  backdrop-filter:blur(3px);
+  padding:20px;
+  gap:12px;
+}
+.fb-countdown>span {
+  font-size:10px;
+  letter-spacing:3px;
+  color:var(--gold);
+}
+.fb-countdown>b {
+  font-size:clamp(50px,12vw,120px);
+  font-weight:900;
+  line-height:1;
+  animation:fb-pop .25s ease-out;
+}
+.fb-countdown p {
+  font-size:12px;
+  max-width:260px;
+  line-height:1.6;
+}
+.fb-pause {
+  background:#2A203Fdf;
+  z-index:3;
+}
+.fb-pause h2 {
+  font-size:clamp(24px,4vw,45px);
+  margin:10px 0 20px;
+  letter-spacing:0;
+}
+.fb-controls {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:15px 0;
+  gap:15px;
+}
+.fb-controls p {
+  font-size:10px;
+  color:var(--muted);
+}
+.fb-controls p>span {
+  margin:0 12px;
+}
+.fb-controls kbd {
+  padding:5px 7px;
+  border:1px solid #ffffff24;
+  margin-right:4px;
+  border-radius:3px;
+  font-size:9px;
+}
+.fb-jump {
+  display:none;
+  background:var(--gold);
+  border:0;
+  color:#2A203F;
+  font-size:12px!important;
+  font-weight:900!important;
+  padding:15px 28px;
+  touch-action:none;
+}
+.fb-touch-hint {
+  display:none;
+  color:var(--muted);
+  font-size:11px;
+}
+@keyframes fb-enter {
+  from {
+    opacity:0;
+    transform:translateY(14px);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+@keyframes fb-pop {
+  from {
+    transform:scale(.75);
+    opacity:.2;
+  }
+  to {
+    transform:scale(1);
+    opacity:1;
+  }
+}
+@keyframes fb-float {
+  50% {
+    transform:translateY(18px) rotate(14deg);
+  }
+}
+@media(min-width:1500px) {
+  .fb-home h1 {
+    font-size:115px;
+  }
+  .fb-hero-art {
+    height:610px;
+  }
+}
+@media(max-width:1000px) {
+  .fb-team-grid {
+    grid-template-columns:repeat(4,1fr);
+  }
+  .fb-team {
+    min-height:157px;
+  }
+  .fb-team img {
+    height:65px;
+    width:65px;
+    margin-bottom:12px;
+  }
+  .fb-player-form {
+    flex-wrap:wrap;
+  }
+  .fb-hero-art {
+    height:390px;
+  }
+  .fb-hero-ball {
+    width:100px;
+    right:25px;
+  }
+  .fb-rules {
+    gap:12px;
+  }
+  .fb-art-type {
+    font-size:88px;
+  }
+}
+@media(pointer:coarse) {
+  .fb-jump,.fb-touch-hint {
+    display:block;
+  }
+  .fb-controls p {
+    display:none;
+  }
+  .fb-controls {
+    justify-content:space-between;
+    max-width:650px;
+    margin:12px auto;
+  }
+}
+@media(max-width:600px) {
+  .fb-header {
+    height:64px;
+  }
+  .fb-back span,.fb-edition {
+    display:none;
+  }
+  .fb-brand {
+    font-size:15px;
+  }
+  .fb-content {
+    padding:30px 0;
+    min-height:calc(100dvh - 116px);
+  }
+  .fb-home {
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .fb-home h1 {
+    font-size:72px;
+    margin:22px 0;
+  }
+  .fb-hero-copy {
+    position:relative;
+    z-index:1;
+  }
+  .fb-hero-copy>p {
+    font-size:13px;
+  }
+  .fb-hero-art {
+    height:230px;
+    order:-1;
+    margin:-10px 0;
+  }
+  .fb-hero-logo {
+    height:200px;
+    width:65%;
+  }
+  .fb-orbit {
+    width:200px;
+    height:200px;
+  }
+  .fb-hero-ball {
+    width:70px;
+    right:40px;
+    top:0;
+  }
+  .fb-art-tag {
+    display:none;
+  }
+  .fb-art-type {
+    font-size:90px;
+  }
+  .fb-rules {
+    margin-top:25px;
+    padding-top:20px;
+    justify-content:space-between;
+  }
+  .fb-eyebrow {
+    font-size:8px;
+    letter-spacing:1.6px;
+  }
+  .fb-actions {
+    gap:10px;
+    margin-top:22px;
+  }
+  .fb-primary,.fb-secondary {
+    padding:15px 18px;
+    gap:16px;
+  }
+  .fb-footer {
+    height:52px;
+    font-size:7px;
+    letter-spacing:.7px;
+    gap:20px;
+  }
+  .fb-footer span:last-child {
+    display:none;
+  }
+  .fb-section-heading h1 {
+    font-size:43px;
+    line-height:1;
+  }
+  .fb-section-heading>p {
+    font-size:12px;
+  }
+  .fb-team-grid {
+    grid-template-columns:repeat(3,1fr);
+    gap:9px;
+    margin:23px 0;
+  }
+  .fb-team {
+    min-height:136px;
+    padding:18px 5px;
+  }
+  .fb-team img {
+    width:56px;
+    height:56px;
+  }
+  .fb-team strong {
+    font-size:10px;
+  }
+  .fb-player-form {
+    padding:17px;
+    gap:18px;
+  }
+  .fb-player-form label {
+    max-width:none;
+    width:100%;
+    flex:auto;
+  }
+  .fb-player-form>.fb-primary {
+    width:100%;
+  }
+  .fb-player-form p {
+    font-size:10px;
+  }
+  .fb-result-card h1 {
+    font-size:43px;
+  }
+  .fb-stats {
+    gap:18px 8px;
+    grid-template-columns:repeat(2,1fr);
+  }
+  .fb-result .fb-actions {
+    flex-direction:column;
+  }
+  .fb-result .fb-actions>button {
+    width:100%;
+  }
+  .fb-leaderboard th,.fb-leaderboard td {
+    padding:12px 9px;
+    font-size:11px;
+  }
+  .fb-leaderboard th {
+    font-size:7px;
+    letter-spacing:.5px;
+  }
+  .fb-ranking-player {
+    gap:7px;
+  }
+  .fb-ranking-player img {
+    width:25px;
+    height:29px;
+  }
+  .fb-ranking-player strong {
+    overflow-wrap:anywhere;
+  }
+  .fb-ranking-player small {
+    font-size:8px;
+  }
+  .fb-match {
+    padding-top:18px;
+  }
+  .fb-match-player {
+    width:auto;
+  }
+  .fb-match-player strong {
+    font-size:11px;
+  }
+  .fb-match-player small {
+    font-size:8px;
+  }
+  .fb-match-player img {
+    width:27px;
+    height:35px;
+  }
+  .fb-match-top>.fb-secondary span {
+    display:none;
+  }
+  .fb-match-top>.fb-secondary {
+    padding:10px;
+  }
+  .fb-match-points strong {
+    font-size:24px;
+  }
+  .fb-court {
+    width:100%;
+    aspect-ratio:1.05;
+    margin-top:25px;
+  }
+  .fb-court canvas {
+    object-fit:fill;
+  }
+  .fb-court-hud {
+    top:15px;
+    left:15px;
+    right:15px;
+    font-size:8px;
+  }
+  .fb-court-hud b {
+    font-size:28px;
+  }
+  .fb-controls {
+    flex-wrap:wrap;
+  }
+  .fb-controls p {
+    line-height:2.5;
+    text-align:center;
+  }
+  .fb-countdown p {
+    font-size:10px;
+  }
+  .fb-feedback {
+    top:22%;
+    left:10%;
+    right:10%;
+  }
+}
+@media(max-height:550px) and (min-width:601px) {
+  .fb-header {
+    height:45px;
+  }
+  .fb-match {
+    padding:6px 0;
+    display:grid;
+    grid-template-columns:150px 1fr;
+    column-gap:16px;
+  }
+  .fb-match-top {
+    flex-direction:column;
+    justify-content:center;
+    gap:16px;
+    margin:0;
+  }
+  .fb-match-player {
+    width:auto;
+  }
+  .fb-court {
+    width:min(100%,calc((100dvh - 104px)*1.5));
+    margin:0 auto;
+  }
+  .fb-controls {
+    grid-column:2;
+    margin:8px 0;
+  }
+  .fb-controls p {
+    font-size:8px;
+  }
+  .fb-jump {
+    position:absolute;
+    right:12px;
+    bottom:12px;
+    padding:12px;
+  }
+  .fb-touch-hint {
+    font-size:9px;
+  }
+  .fb-content {
+    padding:25px 0;
+  }
+  .fb-hero-art {
+    height:290px;
+  }
+  .fb-home h1 {
+    font-size:65px;
+  }
+  .fb-rules {
+    margin-top:20px;
+    padding-top:15px;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .fb-game * {
+    animation:none!important;
+    transition:none!important;
+  }
+}
+/* 8-bit art direction. Screen flow and court coordinates stay unchanged. */
+.fb-game {
+  --pink:#E91176;
+  --gold:#F5BA00;
+  --purple:#54407D;
+  --white:#FFFFFF;
+  --ink:#2A203F;
+  --muted:#FFFFFFCC;
+  background:var(--purple);
+  font-size:16px;
+}
+.fb-game img,.fb-game canvas {
+  image-rendering:pixelated;
+}
+.fb-game button,.fb-game input,.fb-game kbd {
+  font-family:"Funkbol Pixel",monospace;
+  font-weight:500;
+}
+.fb-noise {
+  background:linear-gradient(90deg,#FFFFFF05 2px,transparent 2px),linear-gradient(#FFFFFF05 2px,transparent 2px);
+  background-size:32px 32px;
+}
+.fb-noise:after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(transparent 0 3px,#2A203F12 3px 4px);
+  pointer-events:none;
+}
+.fb-header {
+  border-bottom:3px solid var(--pink);
+}
+.fb-back,.fb-edition {
+  font-size:12px;
+  letter-spacing:1px;
+}
+.fb-brand {
+  font-size:25px;
+  font-weight:700;
+}
+.fb-brand b {
+  font-size:14px;
+  box-shadow:3px 3px 0 var(--pink);
+}
+.fb-eyebrow {
+  font-size:14px;
+  letter-spacing:1px;
+  font-weight:600;
+}
+.fb-eyebrow i {
+  border-radius:0;
+  box-shadow:4px 4px 0 var(--pink);
+}
+.fb-game h1 {
+  font-weight:700;
+  line-height:1;
+  letter-spacing:0;
+  text-shadow:5px 5px 0 var(--ink);
+}
+.fb-game h1 em {
+  font-style:normal;
+  text-shadow:5px 5px 0 var(--pink);
+}
+.fb-hero-copy>p,.fb-section-heading>p {
+  font-size:19px;
+  line-height:1.5;
+}
+.fb-primary,.fb-secondary {
+  font-size:16px!important;
+  font-weight:700!important;
+  letter-spacing:0;
+  border:3px solid var(--ink);
+  min-height:54px;
+  box-shadow:5px 5px 0 var(--ink);
+  transition:transform .1s steps(2),box-shadow .1s steps(2);
+}
+.fb-primary:hover,.fb-secondary:hover {
+  transform:translate(2px,2px);
+  box-shadow:3px 3px 0 var(--ink);
+}
+.fb-primary {
+  background:var(--gold);
+  color:var(--ink);
+}
+.fb-primary:hover {
+  background:var(--white);
+}
+.fb-secondary {
+  background:var(--pink);
+  color:var(--white);
+}
+.fb-secondary:hover {
+  background:var(--purple);
+}
+.fb-text-button {
+  font-size:16px!important;
+  color:var(--white);
+}
+.fb-rules {
+  border-top:2px dashed #FFFFFF50;
+  gap:25px;
+}
+.fb-rules span {
+  font-size:14px;
+  line-height:1.3;
+}
+.fb-rules b {
+  font-size:18px;
+  color:var(--gold);
+}
+.fb-hero-art {
+  background:none;
+  height:520px;
+  overflow:visible;
+}
+.fb-orbit {
+  width:85%;
+  height:72%;
+  top:14%;
+  border:4px solid var(--pink);
+  border-radius:0;
+  transform:none;
+  box-shadow:8px 8px 0 var(--ink);
+  background:repeating-conic-gradient(#FFFFFF05 0% 25%,transparent 0% 50%) 0 0/32px 32px;
+}
+.fb-orbit:before {
+  inset:8px;
+  border:2px dashed #FFFFFF30;
+  border-radius:0;
+}
+.fb-orbit:after {
+  display:none;
+}
+.fb-art-type {
+  font-size:90px;
+  letter-spacing:0;
+  transform:none;
+  top:70px;
+  color:#FFFFFF0A;
+  -webkit-text-stroke:0;
+}
+.fb-hero-logo {
+  transform:none;
+  width:70%;
+  max-height:290px;
+  filter:drop-shadow(5px 5px 0 #2A203F);
+  margin-top:-50px;
+}
+.fb-hero-ball {
+  width:92px;
+  top:15px;
+  right:20px;
+  filter:drop-shadow(5px 5px 0 #2A203F);
+  animation:fb-pixel-ball 2s steps(8) infinite;
+}
+.fb-art-tag {
+  bottom:112px;
+  left:auto;
+  transform:none;
+  background:var(--pink);
+  border:3px solid var(--ink);
+  color:var(--white);
+  font-size:13px;
+  letter-spacing:1px;
+  padding:8px 12px;
+  box-shadow:4px 4px 0 var(--ink);
+}
+.fb-mascot-lineup {
+  position:absolute;
+  bottom:0;
+  left:-3%;
+  width:106%;
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:0;
+  align-items:end;
+}
+.fb-mascot-lineup img {
+  width:100%;
+  filter:drop-shadow(3px 3px 0 #2A203F);
+  animation:fb-sprite-idle 1s steps(2) infinite;
+}
+.fb-mascot-lineup img:nth-child(even) {
+  animation-delay:-.5s;
+}
+.fb-footer {
+  border-top:3px solid var(--pink);
+  font-size:12px;
+  letter-spacing:0;
+  color:#FFFFFFBB;
+}
+.fb-section-heading h1 {
+  font-size:clamp(40px,4.8vw,70px);
+}
+.fb-team-grid {
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:14px;
+  margin:30px 0;
+}
+.fb-team {
+  min-height:245px;
+  padding:16px 8px;
+  background:var(--ink);
+  border:3px solid #FFFFFF40;
+  box-shadow:4px 4px 0 #2A203F;
+  transition:transform .15s steps(2),border-color .15s steps(2);
+}
+.fb-team:hover {
+  transform:translateY(-4px);
+  border-color:var(--white);
+}
+.fb-team.selected {
+  border-color:var(--gold);
+  background:var(--pink);
+  box-shadow:5px 5px 0 var(--gold);
+}
+.fb-team img.fb-team-mascot {
+  width:100%;
+  height:150px;
+  object-fit:contain;
+  margin:0 0 16px;
+  filter:drop-shadow(3px 4px 0 #2A203F80);
+}
+.fb-team.selected img.fb-team-mascot {
+  animation:fb-sprite-idle .8s steps(2) infinite;
+}
+.fb-team strong {
+  font-size:17px;
+  font-weight:600;
+  line-height:1.1;
+}
+.fb-team small {
+  font-size:12px;
+  display:flex;
+  gap:6px;
+  align-items:center;
+  color:var(--white);
+}
+.fb-team small img {
+  width:21px;
+  height:24px;
+  margin:0;
+  filter:none;
+}
+.fb-team-check {
+  font-size:16px;
+  color:#FFFFFF80;
+  right:7px;
+  top:5px;
+}
+.fb-team.selected .fb-team-check {
+  color:var(--gold);
+}
+.fb-player-form {
+  border:3px solid #FFFFFF40;
+  background:var(--ink);
+  box-shadow:5px 5px 0 #2A203F50;
+}
+.fb-player-form label {
+  font-size:13px;
+  letter-spacing:1px;
+}
+.fb-player-form input {
+  font-size:18px;
+  border:2px solid #FFFFFF80;
+  background:var(--purple);
+}
+.fb-player-form p {
+  font-size:15px;
+  line-height:1.4;
+}
+.fb-result-mascot {
+  height:125px;
+  width:135px;
+  object-fit:contain;
+  margin-top:-6px;
+  animation:fb-sprite-idle .8s steps(2) infinite;
+}
+.fb-result-card h1 {
+  margin:14px 0;
+  font-size:clamp(38px,5vw,70px);
+}
+.fb-result-score {
+  font-weight:700;
+  font-size:clamp(65px,9vw,110px);
+  line-height:1;
+  color:var(--gold);
+  text-shadow:4px 4px 0 var(--pink);
+}
+.fb-result-score>span {
+  font-size:14px;
+  letter-spacing:3px;
+  color:var(--white);
+  text-shadow:none;
+  margin:8px 0 20px;
+}
+.fb-stats {
+  border-block:2px dashed #FFFFFF60;
+  padding:20px 0;
+}
+.fb-stats span {
+  font-size:16px;
+}
+.fb-stats b {
+  font-size:32px;
+  color:var(--gold);
+}
+.fb-save-status {
+  font-size:16px;
+}
+.fb-leaderboard {
+  border:3px solid var(--pink);
+  background:var(--ink);
+  box-shadow:5px 5px 0 var(--ink);
+}
+.fb-leaderboard th {
+  background:var(--pink);
+  color:var(--white);
+  font-size:14px;
+  letter-spacing:0;
+}
+.fb-leaderboard td {
+  font-size:19px;
+  border-top:2px solid #FFFFFF20;
+}
+.fb-ranking-player small {
+  font-size:14px;
+}
+.fb-empty h2 {
+  font-size:25px;
+}
+.fb-empty p {
+  font-size:17px;
+}
+.fb-wipe {
+  background:var(--pink);
+  color:var(--white);
+  font-style:normal;
+  letter-spacing:0;
+  border-block:12px solid var(--gold);
+  transition:transform .22s steps(8);
+}
+.fb-match-player strong {
+  font-size:19px;
+  font-weight:600;
+}
+.fb-match-player small {
+  font-size:14px;
+}
+.fb-match-points strong {
+  font-size:40px;
+  line-height:1;
+}
+.fb-match-points span {
+  font-size:12px;
+  letter-spacing:2px;
+}
+.fb-match-top>.fb-secondary {
+  font-size:14px!important;
+}
+.fb-court {
+  border:3px solid var(--pink);
+  box-shadow:6px 6px 0 var(--ink);
+  background-color:var(--ink);
+  image-rendering:pixelated;
+}
+.fb-court-hud {
+  font-size:16px;
+  color:var(--white);
+  text-shadow:2px 2px 0 var(--ink);
+}
+.fb-court-hud b {
+  font-size:42px;
+  font-weight:700;
+  line-height:1;
+}
+.fb-court-hud small {
+  color:#FFFFFFAA;
+}
+.fb-feedback {
+  font-family:"Funkbol Pixel",monospace;
+  font-style:normal;
+  font-size:clamp(15px,2vw,28px);
+  text-shadow:3px 3px 0 var(--ink);
+  animation:fb-pop .2s steps(3);
+}
+.fb-feedback.combo {
+  text-shadow:3px 3px 0 var(--pink);
+}
+.fb-countdown,.fb-pause {
+  background:#54407DD9;
+  backdrop-filter:none;
+}
+.fb-countdown>span {
+  font-size:17px;
+  letter-spacing:1px;
+}
+.fb-countdown>b {
+  font-size:110px;
+  color:var(--gold);
+  text-shadow:6px 6px 0 var(--pink);
+  animation:fb-pop .2s steps(3);
+}
+.fb-countdown p {
+  font-size:18px;
+  max-width:360px;
+  line-height:1.2;
+}
+.fb-pause h2 {
+  font-size:clamp(28px,4vw,48px);
+  letter-spacing:0;
+  text-shadow:4px 4px 0 var(--ink);
+}
+.fb-controls p {
+  font-size:15px;
+  color:var(--white);
+}
+.fb-controls kbd {
+  font-size:13px;
+  border-radius:0;
+  border:2px solid #FFFFFF80;
+  box-shadow:2px 2px 0 var(--ink);
+}
+.fb-jump {
+  font-size:18px!important;
+  border:3px solid var(--ink);
+  box-shadow:4px 4px 0 var(--pink);
+}
+.fb-touch-hint {
+  font-size:15px;
+  color:var(--white);
+}
+@keyframes fb-sprite-idle {
+  50% {
+    transform:translateY(-4px);
+  }
+}
+@keyframes fb-pixel-ball {
+  50% {
+    transform:translateY(16px) rotate(90deg);
+  }
+}
+@media(min-width:1500px) {
+  .fb-home h1 {
+    font-size:115px;
+  }
+  .fb-hero-art {
+    height:560px;
+  }
+}
+@media(max-width:1100px) {
+  .fb-team-grid {
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+  .fb-team {
+    min-height:218px;
+  }
+  .fb-team img.fb-team-mascot {
+    height:145px;
+  }
+  .fb-hero-art {
+    height:420px;
+  }
+  .fb-art-tag {
+    bottom:95px;
+  }
+  .fb-hero-logo {
+    max-height:240px;
+  }
+}
+@media(max-width:600px) {
+  .fb-header {
+    height:64px;
+  }
+  .fb-brand {
+    font-size:22px;
+  }
+  .fb-brand b {
+    font-size:12px;
+  }
+  .fb-back {
+    font-size:16px;
+  }
+  .fb-hero-art {
+    height:250px;
+    overflow:hidden;
+    margin:0;
+  }
+  .fb-orbit {
+    top:14px;
+    height:185px;
+    width:85%;
+  }
+  .fb-hero-logo {
+    height:170px;
+    width:58%;
+    margin-top:-35px;
+  }
+  .fb-hero-ball {
+    width:56px;
+    right:10px;
+    top:0;
+  }
+  .fb-art-type {
+    top:30px;
+    font-size:60px;
+  }
+  .fb-mascot-lineup {
+    bottom:0;
+    left:0;
+    width:100%;
+  }
+  .fb-mascot-lineup img {
+    height:66px;
+    object-fit:contain;
+  }
+  .fb-home h1 {
+    font-size:68px;
+    margin:18px 0;
+  }
+  .fb-eyebrow {
+    font-size:12px;
+    letter-spacing:.5px;
+  }
+  .fb-hero-copy>p,.fb-section-heading>p {
+    font-size:17px;
+  }
+  .fb-primary,.fb-secondary {
+    font-size:15px!important;
+    padding:12px 17px;
+  }
+  .fb-rules {
+    gap:15px;
+    padding-top:16px;
+    margin-top:25px;
+  }
+  .fb-rules span {
+    font-size:13px;
+  }
+  .fb-rules b {
+    font-size:16px;
+  }
+  .fb-footer {
+    font-size:10px;
+  }
+  .fb-section-heading h1 {
+    font-size:43px;
+  }
+  .fb-team-grid {
+    gap:10px;
+    margin:22px 0;
+  }
+  .fb-team {
+    min-height:163px;
+    padding:12px 5px;
+  }
+  .fb-team img.fb-team-mascot {
+    height:98px;
+    margin-bottom:9px;
+  }
+  .fb-team strong {
+    font-size:13px;
+  }
+  .fb-team small {
+    font-size:10px;
+    gap:4px;
+    margin-top:6px;
+  }
+  .fb-team small img {
+    width:15px;
+    height:17px;
+  }
+  .fb-team-check {
+    font-size:11px;
+  }
+  .fb-player-form {
+    padding:15px;
+  }
+  .fb-player-form p {
+    font-size:15px;
+  }
+  .fb-player-form input {
+    font-size:18px;
+  }
+  .fb-player-form label {
+    font-size:12px;
+  }
+  .fb-result-mascot {
+    height:100px;
+  }
+  .fb-result-card h1 {
+    font-size:40px;
+  }
+  .fb-save-status {
+    font-size:15px;
+  }
+  .fb-leaderboard th {
+    font-size:10px;
+  }
+  .fb-leaderboard td {
+    font-size:15px;
+  }
+  .fb-ranking-player small {
+    font-size:12px;
+  }
+  .fb-match-player strong {
+    font-size:15px;
+  }
+  .fb-match-player small {
+    font-size:11px;
+  }
+  .fb-match-points strong {
+    font-size:31px;
+  }
+  .fb-match-points span {
+    font-size:9px;
+  }
+  .fb-match-top>.fb-secondary {
+    font-size:15px!important;
+    min-height:36px;
+  }
+  .fb-court-hud {
+    font-size:12px;
+    left:12px;
+    right:12px;
+    top:12px;
+  }
+  .fb-court-hud b {
+    font-size:33px;
+  }
+  .fb-countdown>span {
+    font-size:13px;
+  }
+  .fb-countdown>b {
+    font-size:75px;
+  }
+  .fb-countdown p {
+    font-size:15px;
+    max-width:260px;
+  }
+  .fb-feedback {
+    top:23%;
+    font-size:17px;
+  }
+  .fb-touch-hint {
+    font-size:13px;
+  }
+  .fb-controls p {
+    font-size:13px;
+  }
+  .fb-controls kbd {
+    font-size:11px;
+  }
+}
+@media(max-height:550px) and (min-width:601px) {
+  .fb-header {
+    height:45px;
+  }
+  .fb-match-player strong {
+    font-size:15px;
+  }
+  .fb-match-player small {
+    font-size:12px;
+  }
+  .fb-controls p {
+    font-size:11px;
+  }
+  .fb-touch-hint {
+    font-size:13px;
+  }
+  .fb-pause h2 {
+    margin:5px 0 8px;
+  }
+  .fb-pause .fb-eyebrow {
+    font-size:12px;
+  }
+  .fb-pause .fb-primary {
+    min-height:44px;
+  }
+  .fb-hero-art {
+    height:300px;
+  }
+  .fb-hero-logo {
+    max-height:185px;
+  }
+  .fb-mascot-lineup img {
+    height:70px;
+    object-fit:contain;
+  }
+  .fb-art-tag {
+    display:none;
+  }
+  .fb-home h1 {
+    font-size:60px;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .fb-game * {
+    animation:none!important;
+    transition:none!important;
+  }
+}
