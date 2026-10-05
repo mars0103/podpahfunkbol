@@ -1,90 +1,99 @@
 import cardBack from '../assets/cards/podpah card verso.png'
-import caio from '../assets/cards/CAIO.png'
-import gustavo from '../assets/cards/GUSTAVO SILVA.png'
-import leleo from '../assets/cards/LELÉO.png'
-import luan from '../assets/cards/LUAN MESTRE.png'
-import reis from '../assets/cards/REIS.png'
-import romarinho from '../assets/cards/ROMARINHO.png'
-import vini from '../assets/cards/VINI ALEXANDRE.png'
-import matheus from '../assets/cards/podpah.png'
+import cardCaio from '../assets/cards/CAIO.png'
+import cardVini from '../assets/cards/VINI ALEXANDRE.png'
+import cardWillian from '../assets/cards/WILLIAN JESUS.png'
+import cardJuninho from '../assets/cards/JUNINHO ANTUNES.png'
+import cardYan from '../assets/cards/YAN CORINGA.png'
+import cardChoco from '../assets/cards/CHOCO.png'
+import cardDraft from '../assets/cards/DRAFT VAZIO.png'
+import cardJuninhoMaestro from '../assets/cards/JUNINHO MAESTRO CARD.png'
 
-import fotoGustavo from '../assets/jogadores/gustavosilva.png'
-import fotoLuan from '../assets/jogadores/luanmestre.png'
 import fotoCaio from '../assets/jogadores/caiomiranda.png'
 import fotoVini from '../assets/jogadores/vinialexandre.png'
-import fotoMatheus from '../assets/jogadores/matheusteteu.png'
-import fotoLeleo from '../assets/jogadores/leléomoura.png'
-import fotoReis from '../assets/jogadores/ronaldinhoreis.png'
-import fotoRomarinho from '../assets/jogadores/AndsonRomarinho.png'
+import fotoWillian from '../assets/jogadores/willianjesus.png'
+import fotoJuninho from '../assets/jogadores/juninhoantunes.png'
+import fotoYan from '../assets/jogadores/yancoringa.png'
+import fotoChoco from '../assets/jogadores/choco.webp'
+import fotoJuninhoMaestro from '../assets/jogadores/JUNINHO PNG.png'
 
 export const CARD_BACK = cardBack
 
 export const PLAYERS = [
   {
     id: 'p1',
-    name: 'Gustavo Silva',
-    front: gustavo,
-    photo: fotoGustavo,
+    name: 'Willian Jesus',
+    position: 'Fixo',
+    front: cardWillian,
+    photo: fotoWillian,
     side: 'left',
-    comment: 'Debaixo das traves ninguém passa — nem proposta indecente!',
+    comment: 'O Capitão do time da Quebrada na Kings League Brasil.',
   },
   {
     id: 'p2',
-    name: 'Luan Mestre',
-    front: luan,
-    photo: fotoLuan,
+    name: 'Juninho Antunes',
+    position: 'Ala Direito',
+    front: cardJuninho,
+    photo: fotoJuninho,
     side: 'left',
-    comment: 'Artilheiro de tanto gol que já virou aula de matemática pro adversário.',
+    comment: 'O Garçom do nosso time.',
   },
   {
     id: 'p3',
-    name: 'Caio',
-    front: caio,
+    name: 'Caio Miranda',
+    position: 'Ala Esquerdo',
+    front: cardCaio,
     photo: fotoCaio,
     side: 'left',
-    comment: 'Marca tão perto que o atacante esquece até o próprio nome.',
+    comment: 'O Homem com chute mais forte da Kings League Brasil.',
   },
   {
     id: 'p4',
     name: 'Vini Alexandre',
-    front: vini,
+    position: 'Fixo',
+    front: cardVini,
     photo: fotoVini,
     side: 'left',
-    comment: 'Perna curta, jogo comprido: resolve na categoria e sai de letra.',
+    comment: 'O dono do gol do milhão no TST 2026.',
   },
   {
     id: 'p5',
-    name: 'Matheus',
-    front: matheus,
-    photo: fotoMatheus,
+    name: 'Juninho Maestro',
+    position: 'Meia',
+    front: cardJuninhoMaestro,
+    photo: fotoJuninhoMaestro,
     side: 'right',
-    comment: 'Cara de bonzinho, mas corta o jogo do adversário igual tesoura.',
+    comment: 'O maestro do time, do Botafogo para o Podpah Funkbol.',
   },
   {
     id: 'p6',
-    name: 'Leléo',
-    front: leleo,
-    photo: fotoLeleo,
+    name: '???',
+    position: 'Mistério',
+    front: cardDraft,
+    photo: cardDraft,
     side: 'right',
-    comment: 'Camisa suada e sorriso fácil — o carisma da Kings League.',
+    comment: 'Mais uma contratação surpresa a caminho. Fica de olho!',
   },
   {
     id: 'p7',
-    name: 'Reis',
-    front: reis,
-    photo: fotoReis,
+    name: 'Yan Coringa',
+    position: 'Meia',
+    front: cardYan,
+    photo: fotoYan,
     side: 'right',
-    comment: 'Joga com nome de rei e finaliza como se fosse decreto.',
+    comment: 'A estrela Draftada pelo Podpah Funkbol.',
   },
   {
     id: 'p8',
-    name: 'Romarinho',
-    front: romarinho,
-    photo: fotoRomarinho,
+    name: 'João Choco',
+    position: 'Pivô',
+    front: cardChoco,
+    photo: fotoChoco,
     side: 'right',
-    comment: 'Não é o Ronaldinho, mas o drible engana igualzinho.',
+    comment: 'Ele é artilheiro e balança muito.',
   },
 ]
+
+export const POSITIONS = ['Goleiro', 'Ala Direito', 'Ala Esquerdo', 'Fixo', 'Meia', 'Pivô']
 
 // Hand-placed jitter so the cards read as scattered but stay legible —
 // percentages are relative to the section box, rotation in degrees.

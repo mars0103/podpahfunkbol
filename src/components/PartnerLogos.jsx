@@ -1,27 +1,45 @@
+import { useEffect, useState } from 'react'
 import DriftWall from './DriftWall'
 import logo99 from '../assets/logosparceiros/99.svg'
-import logoPodpah from '../assets/logosparceiros/PODPAH.svg'
-import logoSuperbet from '../assets/logosparceiros/SUPERBET.svg'
+import logoPhilips from '../assets/logosparceiros/philips.webp'
+import logoAlpha from '../assets/logosparceiros/alphaconsorcio.png'
 
 const ITEMS = [
-  { image: logo99, title: '99', color: '#b3130e' },
-  { image: logoSuperbet, title: 'Superbet', color: '#b3130e' },
-  { image: logoPodpah, title: 'Podpah', color: '#f5ba00' },
-  { image: logoSuperbet, title: 'Superbet', color: '#b3130e' },
-  { image: logo99, title: '99', color: '#b3130e' },
+  { image: logo99, title: '99', color: '#ffcc00' },
+  { image: logoPhilips, title: 'Philips', color: '#0b5ed7' },
+  { image: logoAlpha, title: 'Alpha Consórcio', color: '#0a1a3f' },
+  { image: logoPhilips, title: 'Philips', color: '#0b5ed7' },
+  { image: logo99, title: '99', color: '#ffcc00' },
 ]
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth <= 640
+  )
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 640px)')
+    const onChange = (e) => setIsMobile(e.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+
+  return isMobile
+}
+
 export default function PartnerLogos() {
+  const isMobile = useIsMobile()
+
   return (
     <section className="partner-logos" aria-label="Parceiros oficiais">
       <h2 className="partner-logos-title">NOSSOS PARCEIROS</h2>
       <div className="partner-logos-wall">
         <DriftWall
           items={ITEMS}
-          columns={5}
-          tileWidth={180}
-          tileHeight={110}
-          gap={18}
+          columns={isMobile ? 3 : 5}
+          tileWidth={isMobile ? 108 : 180}
+          tileHeight={isMobile ? 68 : 110}
+          gap={isMobile ? 10 : 18}
           tilt={16}
           turn={-14}
           perspective={1200}

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import texturaUrl from '../assets/textura.svg'
 import crest from '../assets/vetorescudo.png'
 import PlayerCard from './PlayerCard'
@@ -7,11 +8,37 @@ import { PLAYERS, CARD_LAYOUT } from '../data/elenco'
 import { useRevealBubble } from '../hooks/useRevealBubble'
 import dinoAdesivo from '../assets/adesivos/dino 1.png'
 
+const INTRO_MESSAGE = {
+  id: 'intro',
+  name: 'Dino',
+  photo: crest,
+  comment: 'Bora descobrir nosso elenco? Aqui é igual raspadinha, raspou achou!',
+}
+
 export default function Elenco() {
   const { crestRef, activePlayer, handleReveal, handleClose } = useRevealBubble()
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return undefined
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          handleReveal(INTRO_MESSAGE)
+          io.disconnect()
+        }
+      },
+      { threshold: 0.3 }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
-    <section className="elenco" id="elenco" aria-label="Elenco Podpah Funkbol Clube">
+    <section className="elenco" id="elenco" aria-label="Elenco Podpah Funkbol Clube" ref={sectionRef}>
       <div
         className="elenco-texture"
         style={{ WebkitMaskImage: `url(${texturaUrl})`, maskImage: `url(${texturaUrl})` }}

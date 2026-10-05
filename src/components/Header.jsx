@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { label: 'Notícias', to: '/#noticias' },
   { label: 'Elenco', to: '/elenco' },
   { label: 'Kings League', to: '/kings-league' },
+  { label: 'PodpahChallenge', to: '/jogo' },
 ]
 
 const SOCIALS = [

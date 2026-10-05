@@ -1,5 +1,23 @@
+import { useEffect, useState } from 'react'
 import PageIntro from '../components/PageIntro'
-import { MATCHES } from '../data/matches'
+import KingsLeagueTable from '../components/KingsLeagueTable'
+import crestFallback from '../assets/vetorescudo.png'
+import { MATCHES as FALLBACK_MATCHES } from '../data/matches'
+import { apiGet } from '../lib/api'
+
+function mapMatch(m) {
+  return {
+    id: m.id,
+    competition: 'KINGS LEAGUE',
+    date: m.match_date,
+    home: { name: m.home_name, crest: m.home_crest_url || crestFallback },
+    away: { name: m.away_name, crest: m.away_crest_url || crestFallback },
+    homeScore: m.home_score,
+    awayScore: m.away_score,
+    played: !!Number(m.played),
+    highlight: !!Number(m.highlight),
+  }
+}
 
 function MatchRow({ match }) {
   return (
@@ -33,6 +51,16 @@ function MatchRow({ match }) {
 }
 
 export default function KingsLeaguePage() {
+  const [matches, setMatches] = useState(FALLBACK_MATCHES)
+
+  useEffect(() => {
+    apiGet('/matches.php')
+      .then((data) => {
+        if (data.length) setMatches(data.map(mapMatch))
+      })
+      .catch(() => {})
+  }, [])
+
   return (
     <>
       <PageIntro eyebrow="Kings Cup Brasil" title="KINGS LEAGUE">
@@ -62,11 +90,21 @@ export default function KingsLeaguePage() {
           </div>
         </div>
 
-        <ul className="kl-match-list">
-          {MATCHES.map((match) => (
-            <MatchRow match={match} key={match.id} />
-          ))}
-        </ul>
+        <div className="kl-page-grid">
+          <div className="kl-page-panel kl-page-panel-table">
+            <h2 className="kl-page-heading">Tabela</h2>
+            <KingsLeagueTable />
+          </div>
+
+          <div className="kl-page-panel kl-page-panel-matches">
+            <h2 className="kl-page-heading">Jogos</h2>
+            <ul className="kl-match-list">
+              {matches.map((match) => (
+                <MatchRow match={match} key={match.id} />
+              ))}
+            </ul>
+          </div>
+        </div>
       </section>
     </>
   )
