@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/podpahfunkbol/' : '/',
+  base: command === 'build' ? (process.env.VERCEL ? '/' : '/podpahfunkbol/') : '/',
   plugins: [react()],
   server: {
     proxy: {
