@@ -4,7 +4,7 @@ import {parse} from '@babel/parser'
 import {readFileSync,writeFileSync} from 'node:fs'
 const source=readFileSync('src/components/game/footballEngine.js','utf8')
 const ast=parse(source,{sourceType:'module'})
-const names=new Map(),constants=new Set(['MATCH_TICKS','MAX_TICKS','STEP','OWN_AREA_END','CARDS','cardIds'])
+const names=new Map(),constants=new Set(['MATCH_TICKS','MAX_TICKS','STEP','OWN_AREA_END','CARDS','cardIds','STAGES'])
 for(const item of ast.program.body){const n=item.declaration||item;if(n.type==='FunctionDeclaration')names.set(n.id.name,({createCampaign:'campaignCreate',advanceCampaign:'campaignAdvance',campaignResult:'campaignResult'})[n.id.name]||'fb'+n.id.name);if(n.type==='VariableDeclaration')for(const d of n.declarations)if(d.init?.type==='ArrowFunctionExpression')names.set(d.id.name,'fb'+d.id.name)}
 const q=s=>JSON.stringify(s).replace(/\\u([0-9a-f]{4})/g,(_,v)=>String.fromCharCode(parseInt(v,16)))
 const arrayMember=n=>n.type==='Identifier'&&['CARDS','cardIds'].includes(n.name)||n.type==='MemberExpression'&&!n.computed&&n.property.name==='order'
@@ -52,7 +52,7 @@ function fbcardname($id){return ['double'=>'GOL X2','penalty'=>'PÊNALTI','shoot
 function fbassign($target,$values){foreach($values as $key=>$value)$target->$key=$value;return $target;}
 function $orderTeams($seed,$team){}
 `
-php=php.replace('function $orderTeams($seed,$team){}',`function orderTeams($seed,$team){$order=array_values(array_diff(['podpah','capim','dendele','furia','loud','g3x','dibrados','nyvelados','fluxo','desimpain'],[$team]));for($i=count($order)-1;$i>0;$i--){$seed=($seed*1664525+1013904223)&0xffffffff;$j=(int)floor($seed/4294967296*($i+1));[$order[$i],$order[$j]]=[$order[$j],$order[$i]];}return array_slice($order,0,5);}
+php=php.replace('function $orderTeams($seed,$team){}',`function orderTeams($seed,$team){$order=array_values(array_diff(['podpah','capim','dendele','furia','loud','g3x','dibrados','nyvelados','fluxo','desimpain'],[$team]));for($i=count($order)-1;$i>0;$i--){$seed=($seed*1664525+1013904223)&0xffffffff;$j=(int)floor($seed/4294967296*($i+1));[$order[$i],$order[$j]]=[$order[$j],$order[$i]];}return array_slice($order,0,FB_STAGES);}
 function campaignOrder($seed,$team){return orderTeams($seed,$team);}`)
 php+=ast.program.body.map(st).join('\n')
 php=php.replaceAll('$orderTeams(', 'orderTeams(')

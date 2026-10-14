@@ -1,6 +1,8 @@
 import { campaignOrder as orderTeams } from './campaignEngine.js'
-import { STAGE_GOALS } from './campaignRules.js'
-export const MATCH_TICKS=7200, MAX_TICKS=200000, STEP=1/120, OWN_AREA_END=240, STAGES=STAGE_GOALS.length
+// STAGES must stay a literal (not derived from STAGE_GOALS.length): the PHP replay
+// engine is generated from this file by server/build-football-php.mjs, which only
+// understands plain numeric constants, not imported member expressions.
+export const MATCH_TICKS=7200, MAX_TICKS=200000, STEP=1/120, OWN_AREA_END=240, STAGES=3
 export const CARDS={double:{name:'GOL X2',description:'Seus gols valem o dobro por 15s.'},penalty:{name:'PÊNALTI',description:'Uma cobrança, com goleiro e 5s para chutar.'},shootout:{name:'SHOOTOUT',description:'Avance do meio e finalize em até 5s.'},suspend:{name:'SUSPENSÃO',description:'O rival fica fora por 6s.'}}
 const cardIds=Object.keys(CARDS)
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n))
@@ -175,7 +177,7 @@ export function advanceCampaign(s,input={}){
  timers(s);timers(s.rival)
  if(s.globalDouble>0)s.globalDouble--
  if(input.card&&!s.cardHeld&&useCard(s,0))event='card';s.cardHeld=!!input.card
- if(s.phase==='play'&&((s.matchTick>=3300+s.stage*100&&s.matchTick<9000)||s.matchTick>=9900+s.stage*80)&&useCard(s,1))event='rival-card'
+ if(s.phase==='play'&&((s.matchTick>=1650+s.stage*50&&s.matchTick<4500)||s.matchTick>=4950+s.stage*40)&&useCard(s,1))event='rival-card'
  const r=s.rival,control=ai(s),left=s.x<=r.x?0:1
  const playerInput=s.suspended?{}:input
  move(s,playerInput,360*(s.chaos===2?1.25:1));move(r,control,(260+s.stage*18)*(s.chaos===2?1.25:1))
